@@ -17,6 +17,8 @@ public class EmaiSaver {
         String body = httpParser.getBody();
 
 
+        //文件名设为 主题+时间戳
+        //保存到本地同一目录下
         long timestamp = System.currentTimeMillis();
         String filename = subject + "_" + timestamp + ".txt";
 

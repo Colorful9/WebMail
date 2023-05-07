@@ -45,8 +45,6 @@ public class HttpParser implements AutoCloseable{
 
     public boolean isPOSTMethod() throws IOException {
 
-
-
         return "POST".equals(method);
 
     }

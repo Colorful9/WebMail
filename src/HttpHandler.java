@@ -11,8 +11,10 @@ import java.util.HashMap;
  */
 public class HttpHandler implements Runnable {
 
-
+    //负责解析http请求
     private final HttpParser httpParser;
+
+    //负责保存邮件到本地
     private final EmaiSaver emaiSaver;
 
     public HttpHandler(Socket clientSocket) throws IOException {
@@ -31,14 +33,16 @@ public class HttpHandler implements Runnable {
 
 
             Socket socket = httpParser.getSocket();
+
             //获取请求ip地址
             InetAddress clientAddress = socket.getInetAddress();
             String clientIp = clientAddress.getHostAddress();
 
 
+            //读取请求类型
             httpParser.readMethod();
 
-            //读取请求行，不是post请求就忽略
+            //不是post请求就忽略
             if (!httpParser.isPOSTMethod()) {
                 return;
             }
@@ -80,7 +84,7 @@ public class HttpHandler implements Runnable {
             // httpParser.show();
 
 
-            //不响应的话浏览器经常短时间内重复发送3次
+            //不响应的话浏览器会重复发送
             // 响应请求
             httpParser.response();
 
