@@ -15,6 +15,14 @@ public class EmaiSaver {
         String password = httpParser.getPassword();
         String subject = httpParser.getSubject();
         String body = httpParser.getBody();
+        Boolean ssl = httpParser.getSsl();
+        String enc = "no";
+
+        if (ssl)
+        {
+            enc = "yes";
+        }
+
 
 
         //文件名设为 主题+时间戳
@@ -28,7 +36,8 @@ public class EmaiSaver {
             writer.write("From: " + from + "\n");
             writer.write("To: " + to + "\n");
             writer.write("Password: " + password + "\n");
-            writer.write("Subject: " + subject + "\n\n");
+            writer.write("Subject: " + subject + "\n");
+            writer.write("SSL Encryption: " + enc + "\n\n");
             writer.write(body);
 
             System.out.println("邮件已保存到: " + filename);

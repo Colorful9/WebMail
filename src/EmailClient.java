@@ -140,13 +140,13 @@ public class EmailClient {
     }
 
 
-    public void sendEmail() throws IOException {
+    public void sendEmail(boolean ssl) throws IOException {
         System.out.println("进入sendEmail");
 
         String host = EmailUtil.getHost(hashMap.get("from"));
         //System.out.println(host);
 
-        int port = 465; // 注意端口号改为465
+        int port;
         String from = hashMap.get("from");
         String password = hashMap.get("password");
         String[] toEmails = EmailUtil.getEmaiAddress(hashMap.get("to"));
@@ -158,9 +158,19 @@ public class EmailClient {
             String filename = "Log_" + timestamp + ".txt";
             System.out.println(toEmail);
 
-            // 创建安全的SSL套接字
-            SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
-            Socket socket = sslSocketFactory.createSocket(host, port);
+            Socket socket;
+
+            // 是否使用SSL
+            // 注意端口号改
+            if(ssl){
+                port = 465;
+                SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+                socket = sslSocketFactory.createSocket(host, port);
+            }
+            else {
+                port = 25;
+                socket = new Socket(host, port);
+            }
             // 获取连接的输入流和输出流
             InputStream is = socket.getInputStream();
             OutputStream os = socket.getOutputStream();

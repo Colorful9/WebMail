@@ -82,6 +82,8 @@ public class HttpHandler implements Runnable {
                 return;
             }
 
+
+
             //保存邮件到本地
             emaiSaver.SaveEmail();
 
@@ -94,7 +96,8 @@ public class HttpHandler implements Runnable {
              hashMap.put("body",httpParser.getBody());
 
              EmailClient emailClient = new EmailClient(hashMap);
-             emailClient.sendEmail();
+             System.out.println(httpParser.getSsl());
+             emailClient.sendEmail(httpParser.getSsl());
 
 
 

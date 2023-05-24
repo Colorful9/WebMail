@@ -28,6 +28,8 @@ public class HttpParser implements AutoCloseable{
     private String subject;
     private String body;
 
+    private Boolean ssl = false;
+
 
     public HttpParser(Socket socket) throws IOException {
         this.socket = socket;
@@ -129,6 +131,11 @@ public class HttpParser implements AutoCloseable{
                     body = URLDecoder.decode(value, StandardCharsets.UTF_8);
                 } else if(name.equals("password")){
                     password = value;
+                } else if (name.equals("ssl")) {
+                    if(value.equals("yes"))
+                    {
+                        ssl = true;
+                    }
                 }
             }
         }
