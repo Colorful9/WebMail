@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d610e3c-ba69-4a9a-a341-8220480a2994" name="变更" comment="1">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WebEmail/EmaiSaver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WebEmail/EmaiSaver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WebEmail/EmailClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WebEmail/EmailClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WebEmail/EmailResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WebEmail/EmailUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WebEmail/EmailUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WebEmail/HttpHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WebEmail/HttpHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WebEmail/HttpParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WebEmail/HttpParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WebEmail/HttpServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WebEmail/HttpServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WebEmail/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WebEmail/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EmailClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EmailClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EmailUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EmailUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TEST.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebEmail.iml" beforeDir="false" afterPath="$PROJECT_DIR$/WebEmail.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/page1.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +41,13 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectId" id="2PH1egRxbdQT8ABLb34BE7wWfdf" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -81,7 +81,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.SMTPMailSender">
+  <component name="RunManager" selected="应用程序.HttpServer">
     <configuration name="EmailClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="EmailClient" />
       <module name="WebEmail" />
@@ -141,6 +141,8 @@
       <workItem from="1683452138105" duration="1486000" />
       <workItem from="1683465406337" duration="2396000" />
       <workItem from="1683477444982" duration="1709000" />
+      <workItem from="1684894358247" duration="628000" />
+      <workItem from="1684896121961" duration="333000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1683452512044</created>
