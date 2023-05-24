@@ -178,16 +178,15 @@ public class EmailClient {
             while (response.startsWith("250-")) {
                 response = in.readLine();
             }
-            System.out.println(response + "111");
+            System.out.println(response);
             Log.LogDate(filename,"s:     " + response);
             //登录邮箱
             out.write("AUTH LOGIN\r\n");
             Log.LogDate(filename,"c:     AUTH LOGIN");
             out.flush();
             temp = in.readLine();
-            System.out.println(temp + "`12");
+            System.out.println(temp);
             Log.LogDate(filename,"s:     " + temp);
-            System.out.println("555");
             out.write(Base64.getEncoder().encodeToString(from.getBytes()) + "\r\n");
             Log.LogDate(filename,"c:     " + Base64.getEncoder().encodeToString(from.getBytes()));
             out.flush();
