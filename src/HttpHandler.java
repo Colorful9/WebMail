@@ -69,6 +69,19 @@ public class HttpHandler implements Runnable {
             //读取请求体
             httpParser.readHttpBody();
 
+            String fromemail = httpParser.getFrom();
+            String toemail = httpParser.getTo();
+            String[] toEmails = EmailUtil.getEmaiAddress(toemail);
+            Boolean check = HttpParser.emailCheck(fromemail);
+            for (String toEmail : toEmails) {
+                check = check & HttpParser.emailCheck(toEmail);
+            }
+
+            if(!check){
+                System.out.println("邮箱格式错误，请检查您的输入！");
+                return;
+            }
+
             //保存邮件到本地
             emaiSaver.SaveEmail();
 

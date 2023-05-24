@@ -5,6 +5,8 @@ import java.io.*;
 import java.net.Socket;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 @Data
 public class HttpParser implements AutoCloseable{
     private Socket socket;
@@ -151,7 +153,13 @@ public class HttpParser implements AutoCloseable{
         out.flush();
     }
 
-
+    public static boolean emailCheck(String email)
+    {
+        String emailRegex = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
 
 
 
