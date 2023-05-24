@@ -131,10 +131,10 @@ import java.net.Socket;
 import java.io.*;
 import java.util.Base64;
 import java.util.HashMap;
+import java.io.IOException;
 
 public class EmailClient {
     private final HashMap<String, String> hashMap;
-
     public EmailClient(HashMap<String, String> hashMap) {
         this.hashMap = hashMap;
     }
@@ -144,7 +144,7 @@ public class EmailClient {
         System.out.println("进入sendEmail");
 
         String host = EmailUtil.getHost(hashMap.get("from"));
-        System.out.println(host);
+        //System.out.println(host);
 
         int port = 465; // 注意端口号改为465
         String from = hashMap.get("from");
@@ -153,9 +153,10 @@ public class EmailClient {
 
         for (String toEmail : toEmails) {
 
-
+            long timestamp = System.currentTimeMillis();
+            String temp = "\0";
+            String filename = "Log_" + timestamp + ".txt";
             System.out.println(toEmail);
-
 
             // 创建安全的SSL套接字
             SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
@@ -168,52 +169,86 @@ public class EmailClient {
             // 读取服务器的欢迎信息
             String welcomeMsg = in.readLine();
             System.out.println(welcomeMsg);
+            Log.LogDate(filename,"s:   " + welcomeMsg);
             // 登录SMTP服务器
             out.write("EHLO " + host + "\r\n");
+            Log.LogDate(filename,"c:   EHLO " + host);
             out.flush();
             String response = in.readLine();
             while (response.startsWith("250-")) {
                 response = in.readLine();
             }
-            System.out.println(response);
-            // 登录邮箱
+            System.out.println(response + "111");
+            Log.LogDate(filename,"s:     " + response);
+            //登录邮箱
             out.write("AUTH LOGIN\r\n");
+            Log.LogDate(filename,"c:     AUTH LOGIN");
             out.flush();
-            System.out.println(in.readLine());
+            temp = in.readLine();
+            System.out.println(temp + "`12");
+            Log.LogDate(filename,"s:     " + temp);
+            System.out.println("555");
             out.write(Base64.getEncoder().encodeToString(from.getBytes()) + "\r\n");
+            Log.LogDate(filename,"c:     " + Base64.getEncoder().encodeToString(from.getBytes()));
             out.flush();
-            System.out.println(in.readLine());
+            temp = in.readLine();
+            System.out.println(temp);
+            Log.LogDate(filename,"s:     " + temp);
             out.write(Base64.getEncoder().encodeToString(password.getBytes()) + "\r\n");
+            Log.LogDate(filename,"c:     " + Base64.getEncoder().encodeToString(password.getBytes()));
             out.flush();
-            System.out.println(in.readLine());
+            temp = in.readLine();
+            System.out.println(temp);
+            Log.LogDate(filename,"s:     " + temp);
+
             // 设置邮件头信息
             out.write("MAIL FROM: <" + from + ">\r\n");
+            Log.LogDate(filename,"c:     MAIL FROM: <" + from + ">");
             out.flush();
-            System.out.println(in.readLine());
+            temp = in.readLine();
+            System.out.println(temp);
+            Log.LogDate(filename,"s:     " + temp);
             out.write("RCPT TO: <" + toEmail + ">\r\n");
+            Log.LogDate(filename,"c:     RCPT TO: <" + toEmail + ">");
             out.flush();
-            System.out.println(in.readLine());
+            temp = in.readLine();
+            System.out.println(temp);
+            Log.LogDate(filename,"s:     " + temp);
             out.write("DATA\r\n");
+            Log.LogDate(filename,"c:     DATA");
             out.flush();
-            System.out.println(in.readLine());
+            temp = in.readLine();
+            System.out.println(temp);
+            Log.LogDate(filename,"s:     " + temp);
             out.write("FROM: " + from + "\r\n");
+            Log.LogDate(filename,"c:     FROM: " + from);
             out.flush();
             out.write("TO: " + toEmail + "\r\n");
+            Log.LogDate(filename,"c:     TO: " + toEmail);
             out.flush();
             out.write("SUBJECT: " + hashMap.get("subject") + "\r\n");
+            Log.LogDate(filename,"c:     SUBJECT: " + hashMap.get("subject"));
             out.flush();
             out.write("\r\n");
+            Log.LogDate(filename,"\n");
             out.flush();
             // 设置邮件内容
             out.write(hashMap.get("body") + "\r\n");
+            Log.LogDate(filename,"c:     " + hashMap.get("body"));
             out.flush();
             out.write(".\r\n");
+            Log.LogDate(filename,".\n");
             out.flush();
-            System.out.println(in.readLine());
+            temp = in.readLine();
+            System.out.println(temp);
+            Log.LogDate(filename,"s:     " + temp);
             // 退出SMTP服务器
             out.write("QUIT\r\n");
+            Log.LogDate(filename,"c:     QUIT");
             out.flush();
-            System.out.println(in.readLine());
+            temp = in.readLine();
+            System.out.println(temp);
+            Log.LogDate(filename,"s:     " + temp);
             // 关闭连接
             socket.close();
         }

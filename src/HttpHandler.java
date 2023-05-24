@@ -3,7 +3,10 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * 解析，处理http请求
@@ -47,7 +50,12 @@ public class HttpHandler implements Runnable {
                 return;
             }
 
+            LocalDateTime currentTime = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
             System.out.println("连接成功！");
+            String formattedTime = currentTime.format(formatter);
+            System.out.println("当前时间: " + formattedTime);
             System.out.println("发送方ip地址为：" + clientIp);
 
             // 读取请求头
