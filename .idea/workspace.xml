@@ -7,6 +7,8 @@
     <list default="true" id="6d610e3c-ba69-4a9a-a341-8220480a2994" name="变更" comment="log1.2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EmailClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EmailClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HttpHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HttpHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HttpParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HttpParser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,6 +156,7 @@
       <workItem from="1684943711058" duration="397000" />
       <workItem from="1684944119383" duration="2053000" />
       <workItem from="1684988227599" duration="3337000" />
+      <workItem from="1685016805988" duration="1506000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1683452512044</created>

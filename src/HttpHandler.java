@@ -53,6 +53,8 @@ public class HttpHandler implements Runnable {
             LocalDateTime currentTime = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
+            String flag;
+
             System.out.println("连接成功！");
             String formattedTime = currentTime.format(formatter);
             System.out.println("当前时间: " + formattedTime);
@@ -97,7 +99,7 @@ public class HttpHandler implements Runnable {
 
              EmailClient emailClient = new EmailClient(hashMap);
              System.out.println(httpParser.getSsl());
-             emailClient.sendEmail(httpParser.getSsl());
+             flag = emailClient.sendEmail(httpParser.getSsl());
 
 
 
@@ -110,7 +112,7 @@ public class HttpHandler implements Runnable {
 
             //不响应的话浏览器会重复发送
             // 响应请求
-            httpParser.response();
+            httpParser.response(flag);
 
 
         } catch (IOException e) {

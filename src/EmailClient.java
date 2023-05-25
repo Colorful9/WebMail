@@ -140,7 +140,7 @@ public class EmailClient {
     }
 
 
-    public void sendEmail(boolean ssl) throws IOException {
+    public String sendEmail(boolean ssl) throws IOException {
         System.out.println("进入sendEmail");
 
         String host = EmailUtil.getHost(hashMap.get("from"));
@@ -214,6 +214,11 @@ public class EmailClient {
             System.out.println(temp);
             Log.LogDate(filename,"s:     " + temp);
 
+            if(!temp.equals("235 Authentication successful"))
+            {
+                return temp;
+            }
+
             // 设置邮件头信息
             out.write("MAIL FROM: <" + from + ">\r\n");
             System.out.println("MAIL FROM: <" + from + ">\r\n");
@@ -249,12 +254,10 @@ public class EmailClient {
             Log.LogDate(filename,"c:     SUBJECT: " + hashMap.get("subject"));
             out.flush();
             out.write("\r\n");
-            System.out.println("\r\n");
-            Log.LogDate(filename,"\n");
             out.flush();
             // 设置邮件内容
             out.write(hashMap.get("body") + "\r\n");
-            System.out.println(hashMap.get("body") + "\r\n");
+            System.out.println("BODY:" + hashMap.get("body") + "\r\n");
             Log.LogDate(filename,"c:     " + hashMap.get("body"));
             out.flush();
             out.write(".\r\n");
@@ -264,6 +267,10 @@ public class EmailClient {
             temp = in.readLine();
             System.out.println(temp);
             Log.LogDate(filename,"s:     " + temp);
+            if(!temp.equals("250 OK: queued as."))
+            {
+                return temp;
+            }
             // 退出SMTP服务器
             out.write("QUIT\r\n");
             System.out.println("QUIT\r\n");
@@ -274,7 +281,11 @@ public class EmailClient {
             Log.LogDate(filename,"s:     " + temp);
             // 关闭连接
             socket.close();
+
         }
+        return "succeed!";
     }
+
+
 }
 

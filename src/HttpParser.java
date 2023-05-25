@@ -153,11 +153,11 @@ public class HttpParser implements AutoCloseable{
 
     }
 
-    public void response(){
-
-        String response = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n<html><body><h1>Succeed!</h1></body></html>";
+    public void response(String flag){
+        String response = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n<html><body><h1>" + flag + "</h1></body></html>";
         out.print(response);
         out.flush();
+
     }
 
     public static boolean emailCheck(String email)
