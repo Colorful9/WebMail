@@ -5,6 +5,8 @@ import java.io.*;
 import java.net.Socket;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 @Data
 public class HttpParser implements AutoCloseable{
     private Socket socket;
@@ -25,6 +27,8 @@ public class HttpParser implements AutoCloseable{
     private String password;
     private String subject;
     private String body;
+
+    private Boolean ssl = false;
 
 
     public HttpParser(Socket socket) throws IOException {
@@ -127,6 +131,11 @@ public class HttpParser implements AutoCloseable{
                     body = URLDecoder.decode(value, StandardCharsets.UTF_8);
                 } else if(name.equals("password")){
                     password = value;
+                } else if (name.equals("ssl")) {
+                    if(value.equals("yes"))
+                    {
+                        ssl = true;
+                    }
                 }
             }
         }
@@ -144,14 +153,20 @@ public class HttpParser implements AutoCloseable{
 
     }
 
-    public void response(){
-
-        String response = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n<html><body><h1>Succeed!</h1></body></html>";
+    public void response(String flag){
+        String response = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n<html><body><h1>" + flag + "</h1></body></html>";
         out.print(response);
         out.flush();
+
     }
 
-
+    public static boolean emailCheck(String email)
+    {
+        String emailRegex = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
 
 
 

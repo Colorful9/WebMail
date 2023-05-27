@@ -11,6 +11,7 @@
 <!--此处之前没有添加accept-charset="UTF-8"导致浏览器在发送表单数据时默认使用的
 字符实体引用（Character Entity References）格式。这种格式将中文字符转换为
 形如&#26089;&#19978;&#22909;的字符实体-->
+
 <form action="http://localhost" method="POST" accept-charset="UTF-8">
     <label for="from">From:</label>
     <input type="text" id="from" name="from"><br><br>
@@ -27,6 +28,10 @@
 
     <label for="body">Body:</label>
     <textarea id="body" name="body"></textarea><br><br>
+
+    <h4>是否要使用ssl加密通信</h4>
+    <input type="radio" id="sslOption1" name="ssl" value="no" checked> NON-SSL Encryption<br>
+    <input type="radio" id="sslOption2" name="ssl" value="yes"> SSL Encryption<br>
 
     <input type="submit" value="Send">
 </form>
